@@ -1,0 +1,48 @@
+{
+    "name": "hfletcher/laravel-reports",
+    "description": "Laravel port of jdorn/php-reports.",
+    "type": "library",
+    "license": "GNU3",
+    "authors": [
+        {
+            "name": "Hugh Fletcher",
+            "email": "hughafletcher@gmail.com"
+        }
+    ],
+    "require": {
+        "dekor/php-array-table": "dev-master#949fc27",
+        "phpoffice/phpspreadsheet": "^1.1"
+    },
+    "require-dev": {
+        "almasaeed2010/adminlte": "^2.4",
+        "nojes/laravel-employees": "1.0",
+        "thomaspark/bootswatch": "3.3.7",
+        "leafo/lessphp": "0.5",
+        "matthiasmullie/minify": "1.3.59",
+        "maxazan/jquery-treegrid": "0.3.0",
+        "jmosbech/sticky-table-headers": "0.1.24",
+        "fxp/composer-asset-plugin": "1.4.*",
+        "bower-asset/code-prettify": "*"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jmosbech/StickyTableHeaders"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Reports\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Reports\\ServiceProvider"
+            ],
+            "aliases": {
+                "Reports": "Reports\\Facade"
+            }
+        }
+    }
+}
