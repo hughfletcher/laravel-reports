@@ -50,12 +50,20 @@ class Reports
 
         $result = collect();
         foreach ($this->fs->files($path) as $file) {
-            $result->push(app()->makeWith('Reports\Report', ['path' => $file]));
+            $report = app()->makeWith('Reports\Report', ['path' => $file]);
+            if ($this->authorize($report)) {
+                $result->push($report);
+            }
+
         }
 
         foreach($this->fs->directories($path) as $dir) {
 
-            $result->push(new Directory($this, $dir));
+            $dir = app()->makeWith('Reports\Directory', ['reports' => $this, 'path' => $dir]);
+
+            if ($dir->children->isNotEmpty()) {
+                $result->push($dir);
+            }
 
         }
 
@@ -78,7 +86,7 @@ class Reports
 
     public function authorize(Report $report)
     {
-        if (is_null($this->authorize) || is_null($report->auth)) {
+        if (is_null($this->authorize)) {
             return true;
         }
         return ($this->authorize)($report);
