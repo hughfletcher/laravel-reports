@@ -1,4 +1,4 @@
-@extends('reports::html.layout')
+@extends(config('reports.layout'))
 
 @push('css')
     <link href="{{ asset('vendor/reports/css/jquery.treegrid.css') }}" rel="stylesheet">
