@@ -82,7 +82,7 @@ class BuildCommand extends Command
             base_path('vendor/maxazan/jquery-treegrid/js/jquery.treegrid.min.js') => 'js/jquery.treegrid.min.js',
             base_path('vendor/maxazan/jquery-treegrid/js/jquery.treegrid.bootstrap3.js') => 'js/jquery.treegrid.bootstrap3.js',
             base_path('vendor/maxazan/jquery-treegrid/css/jquery.treegrid.css') => 'css/jquery.treegrid.css',
-            base_path('vendor/jmosbech/sticky-table-headers/js/jquery.stickytableheaders.min.js') => 'js/jquery.stickytableheaders.min.js',
+            base_path('vendor/bower-asset/stickytableheaders/js/jquery.stickytableheaders.min.js') => 'js/jquery.stickytableheaders.min.js',
             base_path('vendor/almasaeed2010/adminlte/bower_components/moment/min/moment.min.js') => 'js/moment.min.js',
             base_path('vendor/almasaeed2010/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.js') => 'js/daterangepicker.js',
             base_path('vendor/almasaeed2010/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css') => 'css/daterangepicker.css',
