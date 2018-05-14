@@ -2,31 +2,23 @@
 
 use Illuminate\Support\Collection;
 use Illuminate\Foundation\Application;
+use Closure;
 
 class Reports
 {
     private $reports;
     private $fs;
-    private $db;
+    private $authorize;
 
     public function __construct(Application $app)
     {
         $this->fs = $app['filesystem']->disk(config('reports.reports.disk'));
-        $this->db= $app['db'];
     }
 
     public function all()
     {
         return $this->allRecursive(config('reports.reports.path'));
     }
-
-    // public function find($path, $macros = [])
-    // {
-    //     $report = $this->findOrCreate($path);
-    //     $report->macros($macros);
-    //
-    //     return $report;
-    // }
 
     public function find($search, $items = null)
     {
@@ -58,7 +50,6 @@ class Reports
 
         $result = collect();
         foreach ($this->fs->files($path) as $file) {
-            // $result->push(new Report($this->fs, $this->db, $file));
             $result->push(app()->makeWith('Reports\Report', ['path' => $file]));
         }
 
@@ -73,6 +64,24 @@ class Reports
         }
 
         return $result;
+    }
+
+
+    // Reports::auth(function($report) {
+    //     return request()->query('user') == $report->auth;
+    // });
+
+    public function auth(Closure $callback)
+    {
+        $this->authorize = $callback;
+    }
+
+    public function authorize(Report $report)
+    {
+        if (is_null($this->authorize) || is_null($report->auth)) {
+            return true;
+        }
+        return ($this->authorize)($report);
     }
 
 }

@@ -2,6 +2,7 @@
 --     "name": "Employee Hired After",
 --     "description": "Lists all employees hired after a specified date.",
 --     "connection": "mysql",
+--     "auth": "hfletcher",
 --     "variables" : [
 --         {
 --             "name": "date",
