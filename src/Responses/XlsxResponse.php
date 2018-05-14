@@ -9,6 +9,9 @@ class XlsxResponse implements Response
 {
     public function make(Report $report)
     {
+        if (!$report->ready) {
+            return $report->toArray()['message'];
+        }
         $data = $report->run();
         $data->prepend(array_keys($data->first()));
         $spreadsheet = new Spreadsheet();

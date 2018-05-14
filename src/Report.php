@@ -43,7 +43,8 @@ class Report implements Arrayable
             'report_path' => str_replace(config('reports.reports.path') . '/', '', $this->full_path),
             'macros' => [],
             'vertical' => false,
-            'query' => null
+            'query' => null,
+            'auth' => null
         ];
     }
 
@@ -244,6 +245,13 @@ class Report implements Arrayable
 
     public function toArray()
     {
+        if (!$this->data['ready']) {
+            $array = ['success' => false];
+            if ($this->data['header_errors'] || $this->data['macro_errors']) {
+                return ['success' => false, 'message' => 'There are issues with your report syntax configuration.'];
+            }
+            return ['success' => false, 'message' => 'This report needs more information before running.'];
+        }
         return $this->run()->toArray();
     }
 
