@@ -7,7 +7,7 @@ services:
     volumes:
       - .:/var/www/laravel-reports
     ports:
-      - "8000:80"
+      - "8040:80"
     environment:
       - APP_ENV=local
       - APP_DEBUG=true
