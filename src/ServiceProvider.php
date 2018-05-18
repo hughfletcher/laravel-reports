@@ -23,7 +23,7 @@ class ServiceProvider extends Provider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'reports');
 
         $this->publishes([
-            __DIR__.'/../views' => resource_path('views/vendor/reports'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/reports'),
         ], 'views');
 
         $this->publishes([
@@ -67,7 +67,7 @@ class ServiceProvider extends Provider
 
     private function loadRoutes()
     {
-        $this->app['router']->namespace('Reports')->group(function () {
+        $this->app['router']->middleware('web')->namespace('Reports')->group(function () {
 
             $this->app['router']->get('/reports', 'Controller@reports')
                 ->name('reports.reports');
