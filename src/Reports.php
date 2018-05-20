@@ -51,7 +51,7 @@ class Reports
         $result = collect();
         foreach ($this->fs->files($path) as $file) {
             $report = app()->makeWith('Reports\Report', ['path' => $file]);
-            if ($this->authorize($report)) {
+            if ($this->check($report)) {
                 $result->push($report);
             }
 
@@ -81,15 +81,12 @@ class Reports
 
     public function auth(Closure $callback)
     {
-        $this->authorize = $callback;
+        $this->authUsing = $callback;
     }
 
-    public function authorize(Report $report)
+    public function check($report)
     {
-        if (is_null($this->authorize)) {
-            return true;
-        }
-        return ($this->authorize)($report);
+        return call_user_func($this->authUsing, $report);
     }
 
 }
