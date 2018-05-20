@@ -103,7 +103,7 @@ class Report implements Arrayable
 
                 $this->data['query'] = $this->render($php, $vars);
 
-                $final = $original = collect($this->db->select($this->data['query']))->map(function($x){ return (array) $x; });
+                $final = $original = collect($this->db->connection($this->data['connection'])->select($this->data['query']))->map(function($x){ return (array) $x; });
             }
 
             if ($original->isEmpty()) {
