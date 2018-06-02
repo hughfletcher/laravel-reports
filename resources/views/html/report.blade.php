@@ -124,7 +124,7 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a href="{{ route('reports.report', ['format' => 'xlsx', 'report' => $report->report_path, 'macros' => $report->macros]) }}">Download Excel</a></li>
-                <li><a href="{{ route('reports.report', ['format' => 'text', 'report' => $report->report_path, 'macros' => $report->macros]) }}">Text</a></li>
+                @if(class_exists('dekor\ArrayToTextTable'))<li><a href="{{ route('reports.report', ['format' => 'text', 'report' => $report->report_path, 'macros' => $report->macros]) }}">Text</a></li>@endif
                 <li role="separator" class="divider"></li>
                 <li><a href="{{ route('reports.report', ['format' => 'json', 'report' => $report->report_path, 'macros' => $report->macros]) }}">JSON</a></li>
             </ul>
