@@ -10,20 +10,42 @@
         }
     ],
     "require": {
-        "dekor/php-array-table": "dev-master#949fc27",
         "phpoffice/phpspreadsheet": "^1.1"
     },
     "require-dev": {
         "almasaeed2010/adminlte": "^2.4",
+        "dekor/php-array-table": "dev-master#949fc27",
         "nojes/laravel-employees": "1.0",
-        "thomaspark/bootswatch": "3.3.7",
         "leafo/lessphp": "0.5",
         "matthiasmullie/minify": "1.3.59",
         "maxazan/jquery-treegrid": "0.3.0",
-        "fxp/composer-asset-plugin": "1.4.*",
-        "bower-asset/code-prettify": "*",
-        "bower-asset/StickyTableHeaders": "0.1.24"
+        "google/code-prettify": "2015-12-04",
+        "jmosbech/StickyTableHeaders": "0.1.24"
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "google/code-prettify",
+                "version": "2015-12-04",
+                "dist": {
+                    "url": "https://github.com/google/code-prettify/archive/2015-12-04.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jmosbech/StickyTableHeaders",
+                "version": "0.1.24",
+                "dist": {
+                    "url": "https://github.com/jmosbech/StickyTableHeaders/archive/v0.1.24.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Reports\\": "src"
