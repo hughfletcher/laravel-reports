@@ -14,17 +14,9 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/reports/css/bootstrap.flatly.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/reports/css/reports.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/reports/css/app.css') }}" rel="stylesheet">
     @stack('css')
 
-    <!-- Custom styles for this template -->
-
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -38,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ route('reports.reports') }}">Laravel Reports</a>
+          <a class="navbar-brand" href="{{ route('reports.list') }}">Laravel Reports</a>
         </div>
         {{-- <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -54,13 +46,13 @@
       </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="{{ str_replace('.', '-', Route::currentRouteName()) }}">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
               @foreach (Reports::all() as $report_item)
                   @if($report_item instanceof Reports\Directory)
-                  <li class=""><a href="{{ route('reports.reports', ['dir' => $report_item->id])}}">{{ $report_item->name }} <span class="sr-only">(current)</span></a></li>
+                  <li class=""><a href="{{ route('reports.list', ['dir' => $report_item->id])}}">{{ $report_item->name }} <span class="sr-only">(current)</span></a></li>
                 @endif
               @endforeach
 
@@ -75,8 +67,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{{ asset('vendor/reports/js/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/reports/js/bootstrap.min.js') }}"></script>
     @stack('js')
   </body>

@@ -13,7 +13,7 @@ class DrilldownFilter extends AbstractFilter implements ForHtml
         }
 
         $new_row = $row;
-        $new_row[$col] = '<a href="' . route('reports.report', array_merge(['format' => 'html', 'report' => $this->params['report']], $macros)) . '">' . $row[$col] . '</a>';
+        $new_row[$col] = '<a href="' . route('reports.show', array_merge(['format' => 'html', 'report' => $this->params['report']], $macros)) . '">' . $row[$col] . '</a>';
         return $new_row;
     }
 

@@ -8,7 +8,7 @@
             </h4>
         </div>
         <div id="variables" class="panel-collapse collapse{{ !$report->ready ? ' in' : null }}" role="tabpanel" aria-labelledby="headingOne">
-            <form action="{{ route('reports.report', ['type' => 'html']) }}" class="form-horizontal" method="get">
+            <form action="{{ route('reports.show', ['type' => 'html']) }}" class="form-horizontal" method="get">
                 <input type="hidden" name="report" value="{{ $report->report_path }}" />
                 <div class="panel-body">
                 @foreach ($report->headers['variables']->toArray() as $variable)

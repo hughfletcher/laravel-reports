@@ -39,7 +39,7 @@ class Report implements Arrayable
             'header_errors' => [],
             'macro_errors' => null,
             'ready' => false,
-            'report_url' => route('reports.report'),
+            'report_url' => route('reports.show'),
             'report_path' => str_replace(config('reports.reports.path') . '/', '', $this->full_path),
             'macros' => [],
             'vertical' => false,

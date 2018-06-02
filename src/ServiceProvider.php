@@ -70,11 +70,11 @@ class ServiceProvider extends Provider
         $this->app['router']->middleware('web')->namespace('Reports')->group(function () {
 
             $this->app['router']->get('/reports', 'Controller@reports')
-                ->name('reports.reports');
+                ->name('reports.list');
 
             $this->app['router']->get('report/{type?}', 'Controller@report')
                 ->where('type', 'html|json|text|xlsx|jsonh')
-                ->name('reports.report');
+                ->name('reports.show');
         });
     }
 
