@@ -15,7 +15,7 @@ class Controller extends LaravelController
     {
         $report = Reports::find($request->query('report'));
 
-        if (!Reports::authorize($report)) {
+        if (!Reports::check($report)) {
             throw new AccessDeniedHttpException('This action is unauthorized.');
         }
 

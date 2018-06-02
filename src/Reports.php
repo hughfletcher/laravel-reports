@@ -8,7 +8,7 @@ class Reports
 {
     private $reports;
     private $fs;
-    private $authorize;
+    private $authUsing;
 
     public function __construct(Application $app)
     {
@@ -86,7 +86,7 @@ class Reports
 
     public function check($report)
     {
-        return call_user_func($this->authUsing, $report);
+        return $this->authUsing ? call_user_func($this->authUsing, $report) : true;
     }
 
 }
