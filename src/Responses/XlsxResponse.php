@@ -1,11 +1,12 @@
 <?php namespace Reports\Responses;
 
-use Reports\Contracts\Response;
+use Illuminate\Support\Facades\Response;
+use Reports\Contracts\Response as ReportResponse;
 use Reports\Report;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class XlsxResponse implements Response
+class XlsxResponse implements ReportResponse
 {
     public function make(Report $report)
     {
@@ -31,6 +32,6 @@ class XlsxResponse implements Response
             storage_path() . '/app/' . $temp_name . '.xlsx',
             snake_case($report->name) . '.xlsx'
         )->deleteFileAfterSend(true);
-        
+
     }
 }
