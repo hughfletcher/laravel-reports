@@ -12,11 +12,25 @@ class XlsxResponse implements Response
         if (!$report->ready) {
             return $report->toArray()['message'];
         }
-        $data = $report->run();
-        $data->prepend(array_keys($data->first()));
+
+        $final = $original = $report->run();
+        foreach ($report->headers as $header) {
+            if ($header instanceof AltersResult) {
+                $final = $header->filterResults($original, $final);
+            }
+
+        }
+
+        $final->prepend(array_keys($final->first()));
         $spreadsheet = new Spreadsheet();
-        $spreadsheet->getActiveSheet()->fromArray($data->toArray());
-        (new Xlsx($spreadsheet))->save(storage_path() . '/app/test.xlsx');
-        return response()->download(storage_path() . '/app/test.xlsx', 'test.xlsx')->deleteFileAfterSend(true);
+        $spreadsheet->getActiveSheet()->fromArray($final->toArray());
+        $temp_name = md5(time() . $report->name);
+        $writer = (new Xlsx($spreadsheet))->save(storage_path() . '/app/' . $temp_name . '.xlsx');
+
+        return Response::download(
+            storage_path() . '/app/' . $temp_name . '.xlsx',
+            snake_case($report->name) . '.xlsx'
+        )->deleteFileAfterSend(true);
+        
     }
 }
