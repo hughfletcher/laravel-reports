@@ -1,13 +1,3 @@
-{{-- <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#variables" aria-expanded="true" aria-controls="variables">
-                    Report Configuration
-                </a>
-            </h4>
-        </div>
-        <div id="variables" class="panel-collapse collapse{{ !$report->ready ? ' in' : null }}" role="tabpanel" aria-labelledby="headingOne"> --}}
 <div id="config-modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="config-modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -64,7 +54,6 @@
 
 
                 </div>
-                {{-- <div class="panel-footer"><input class="btn btn-primary btn-sm" type="submit" value="Run Report"></div> --}}
 
             </div>
             <div class="modal-footer">
@@ -75,6 +64,3 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-        {{-- </div>
-    </div>
-</div> --}}
