@@ -15,6 +15,7 @@
     "require-dev": {
         "almasaeed2010/adminlte": "^2.4",
         "dekor/php-array-table": "dev-master#949fc27",
+        "jasonlewis/resource-watcher": "1.2.*",        
         "nojes/laravel-employees": "1.0",
         "leafo/lessphp": "0.5",
         "matthiasmullie/minify": "1.3.59",
