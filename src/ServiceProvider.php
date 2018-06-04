@@ -73,7 +73,7 @@ class ServiceProvider extends Provider
                 ->name('reports.list');
 
             $this->app['router']->get('report/{type?}', 'Controller@report')
-                ->where('type', 'html|json|text|xlsx|jsonh')
+                ->where('type', 'html|json|text|xlsx|jsonh|csv')
                 ->name('reports.show');
         });
     }
